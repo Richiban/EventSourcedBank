@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C6446D23-0589-474B-A996-D3BB0F637EAD}</ProjectGuid>
+    <ProjectGuid>{5D7AC500-4A47-4547-B3EA-107553FE2529}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventSourcedBank.Domain</RootNamespace>
-    <AssemblyName>EventSourcedBank.Domain</AssemblyName>
+    <RootNamespace>EventSourcedBank.Application</RootNamespace>
+    <AssemblyName>EventSourcedBank.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.3.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,25 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountCreated.cs" />
-    <Compile Include="AccountId.cs" />
-    <Compile Include="BankAccountEvent.cs" />
-    <Compile Include="AccountOwner.cs" />
-    <Compile Include="BankAccount.cs" />
-    <Compile Include="BankAccountState.cs" />
-    <Compile Include="EventStream.cs" />
-    <Compile Include="DomainEvent.cs" />
-    <Compile Include="FundsDeposited.cs" />
-    <Compile Include="FundsWithdrawn.cs" />
-    <Compile Include="InsufficientFundsException.cs" />
-    <Compile Include="Money.cs" />
-    <Compile Include="Name.cs" />
-    <Compile Include="NameChanged.cs" />
-    <Compile Include="OwnerEvent.cs" />
+    <Compile Include="AccountRetriever.cs" />
+    <Compile Include="BankAccountStateQuery.cs" />
+    <Compile Include="CreateNewAccountCommand.cs" />
+    <Compile Include="NewAccountCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj">
+      <Project>{CF18BC36-BF06-4132-9CCD-A2066C623BE5}</Project>
+      <Name>EventSourcedBank.Data.Read</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcedBank.Data.Write\EventSourcedBank.Data.Write.csproj">
+      <Project>{50D9E542-AACB-4005-B5C4-7D86F5674145}</Project>
+      <Name>EventSourcedBank.Data.Write</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcedBank.Domain\EventSourcedBank.Domain.csproj">
+      <Project>{C6446D23-0589-474B-A996-D3BB0F637EAD}</Project>
+      <Name>EventSourcedBank.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

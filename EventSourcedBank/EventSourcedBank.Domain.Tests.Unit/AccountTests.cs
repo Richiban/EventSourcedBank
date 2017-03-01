@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace EventSourcedBank.Domain.Tests.Unit
@@ -43,7 +44,11 @@ namespace EventSourcedBank.Domain.Tests.Unit
             Assert.Throws<InsufficientFundsException>(() => account = account.Withdraw(hundredMonies));
         }
 
-        private static BankAccount NewAccount(Money fiftyMonies)
-            => new BankAccount(Enumerable.Empty<BankAccountEvent>(), new BankAccountState(fiftyMonies));
+        private static BankAccount NewAccount(Money monies)
+        {
+            var bankAccount = BankAccount.Create(AccountId.NewId(), DateTimeOffset.Now);
+
+            return bankAccount.Deposit(monies);
+        }
     }
 }

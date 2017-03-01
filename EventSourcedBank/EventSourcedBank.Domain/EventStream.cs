@@ -9,9 +9,9 @@ namespace EventSourcedBank.Domain
     {
         protected readonly ImmutableList<T> Events;
 
-        public EventStream() : this(Enumerable.Empty<T>()) { }
+        protected EventStream() : this(Enumerable.Empty<T>()) { }
 
-        public EventStream(IEnumerable<T> events)
+        protected EventStream(IEnumerable<T> events)
         {
             Events = events.ToImmutableList();
         }

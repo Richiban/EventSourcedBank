@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Domain.Tests.Unit", "EventSourcedBank.Domain.Tests.Unit\EventSourcedBank.Domain.Tests.Unit.csproj", "{CC97A1BA-0776-4C1D-96C3-46EFFDC22B8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Data.Write", "EventSourcedBank.Data.Write\EventSourcedBank.Data.Write.csproj", "{50D9E542-AACB-4005-B5C4-7D86F5674145}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Data.Read", "EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj", "{CF18BC36-BF06-4132-9CCD-A2066C623BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Application", "EventSourcedBank.Application\EventSourcedBank.Application.csproj", "{5D7AC500-4A47-4547-B3EA-107553FE2529}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4740C828-C721-4D18-9C8F-B29CABBFBABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Application.Tests.EndToEnd", "EventSourcedBank.Application.Tests.EndToEnd\EventSourcedBank.Application.Tests.EndToEnd.csproj", "{E241F578-EBFF-45F0-AA30-AB390ABE9495}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +31,28 @@ Global
 		{CC97A1BA-0776-4C1D-96C3-46EFFDC22B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC97A1BA-0776-4C1D-96C3-46EFFDC22B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC97A1BA-0776-4C1D-96C3-46EFFDC22B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D9E542-AACB-4005-B5C4-7D86F5674145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D9E542-AACB-4005-B5C4-7D86F5674145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D9E542-AACB-4005-B5C4-7D86F5674145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D9E542-AACB-4005-B5C4-7D86F5674145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF18BC36-BF06-4132-9CCD-A2066C623BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF18BC36-BF06-4132-9CCD-A2066C623BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF18BC36-BF06-4132-9CCD-A2066C623BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF18BC36-BF06-4132-9CCD-A2066C623BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7AC500-4A47-4547-B3EA-107553FE2529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7AC500-4A47-4547-B3EA-107553FE2529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7AC500-4A47-4547-B3EA-107553FE2529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7AC500-4A47-4547-B3EA-107553FE2529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC97A1BA-0776-4C1D-96C3-46EFFDC22B8D} = {4740C828-C721-4D18-9C8F-B29CABBFBABD}
+		{E241F578-EBFF-45F0-AA30-AB390ABE9495} = {4740C828-C721-4D18-9C8F-B29CABBFBABD}
 	EndGlobalSection
 EndGlobal
