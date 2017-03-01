@@ -47,7 +47,6 @@
     <Compile Include="AccountCreated.cs" />
     <Compile Include="AccountId.cs" />
     <Compile Include="BankAccountEvent.cs" />
-    <Compile Include="AccountOwner.cs" />
     <Compile Include="BankAccount.cs" />
     <Compile Include="BankAccountState.cs" />
     <Compile Include="EventStream.cs" />
@@ -57,8 +56,6 @@
     <Compile Include="InsufficientFundsException.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Name.cs" />
-    <Compile Include="NameChanged.cs" />
-    <Compile Include="OwnerEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

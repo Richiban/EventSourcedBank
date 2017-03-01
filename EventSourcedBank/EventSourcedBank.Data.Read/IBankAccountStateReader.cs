@@ -2,7 +2,7 @@
 
 namespace EventSourcedBank.Data.Read
 {
-    public interface IBankAccountStateRepository
+    public interface IBankAccountStateReader
     {
         BankAccountData Retrieve(Guid accountId);
     }

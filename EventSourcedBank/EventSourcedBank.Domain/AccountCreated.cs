@@ -4,7 +4,7 @@ namespace EventSourcedBank.Domain
 {
     public sealed class AccountCreated : BankAccountEvent
     {
-        public AccountCreated(DateTimeOffset createdOn)
+        public AccountCreated(int id, DateTimeOffset createdOn) : base(id, createdOn)
         {
             CreatedOn = createdOn;
         }

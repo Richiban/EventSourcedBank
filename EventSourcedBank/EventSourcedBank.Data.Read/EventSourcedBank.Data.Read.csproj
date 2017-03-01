@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountData.cs" />
-    <Compile Include="BankAccountStateRepository.cs" />
-    <Compile Include="IBankAccountStateRepository.cs" />
+    <Compile Include="BankAccountStateReader.cs" />
+    <Compile Include="IBankAccountStateReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

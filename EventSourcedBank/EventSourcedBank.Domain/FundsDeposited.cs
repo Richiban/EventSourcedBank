@@ -1,8 +1,10 @@
-﻿namespace EventSourcedBank.Domain
+﻿using System;
+
+namespace EventSourcedBank.Domain
 {
     public sealed class FundsDeposited : BankAccountEvent
     {
-        public FundsDeposited(Money amount)
+        public FundsDeposited(int id, DateTimeOffset occuredOn, Money amount) : base(id, occuredOn)
         {
             AmountDeposited = amount;
         }

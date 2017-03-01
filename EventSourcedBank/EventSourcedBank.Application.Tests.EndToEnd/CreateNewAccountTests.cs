@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using System.Runtime.InteropServices;
 using EventSourcedBank.Data.Write;
 using FluentAssertions;
@@ -11,21 +12,24 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
     {
         private NewAccountCreator _newAccountCreator;
         private AccountRetriever _accountRetriever;
+        private CashMachine _cashMachine;
 
         [SetUp]
         public void SetUp()
         {
-            _newAccountCreator = new NewAccountCreator(new BankAccountRepository());
+            var bankAccountRepository = new BankAccountRepository();
+
+            _newAccountCreator = new NewAccountCreator(bankAccountRepository);
             _accountRetriever = new AccountRetriever();
+            _cashMachine = new CashMachine(bankAccountRepository);
         }
 
         /// <summary>
-        /// Given nothing
         /// When I create a new account
         /// Then I can retrieve the state of the account
         /// </summary>
         [Test]
-        public void Given_When_Then()
+        public void Test1()
         {
             var accountId = Guid.NewGuid();
 
@@ -37,6 +41,50 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
 
             actual.Id.Should().Be(accountId);
             actual.Balance.Should().Be(0);
+        }
+
+        /// <summary>
+        /// Given a new account
+        /// When I deposit 50
+        /// Then my balance is 50
+        /// </summary>
+        [Test]
+        public void Test2()
+        {
+            var accountId = Guid.NewGuid();
+
+            var command = new CreateNewAccountCommand(accountId);
+            _newAccountCreator.Create(command);
+
+            _cashMachine.Deposit(new MakeDepositCommand(accountId, 5000));
+
+            var actual = _accountRetriever.Retrieve(new BankAccountStateQuery(accountId));
+
+            actual.Id.Should().Be(accountId);
+            actual.Balance.Should().Be(5000);
+        }
+
+        /// <summary>
+        /// Given a new account with balance 50
+        /// When I withdraw 20
+        /// Then my balance is 30
+        /// </summary>
+        [Test]
+        public void Test3()
+        {
+            var accountId = Guid.NewGuid();
+
+            var command = new CreateNewAccountCommand(accountId);
+            _newAccountCreator.Create(command);
+
+            _cashMachine.Deposit(new MakeDepositCommand(accountId, 5000));
+
+            _cashMachine.Withdraw(new MakeWithdrawalCommand(accountId, 2000));
+
+            var actual = _accountRetriever.Retrieve(new BankAccountStateQuery(accountId));
+
+            actual.Id.Should().Be(accountId);
+            actual.Balance.Should().Be(3000);
         }
     }
 }

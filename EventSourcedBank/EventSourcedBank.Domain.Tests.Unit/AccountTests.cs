@@ -12,7 +12,7 @@ namespace EventSourcedBank.Domain.Tests.Unit
             var account = NewAccount(Money.Zero);
 
             var fiftyMonies = new Money(5000);
-            account = account.Deposit(fiftyMonies);
+            account = account.Deposit(fiftyMonies, DateTimeOffset.Now);
 
             var actualBalance = account.State.CurrentBalance;
             var expectedBalance = fiftyMonies;
@@ -26,7 +26,7 @@ namespace EventSourcedBank.Domain.Tests.Unit
             var fiftyMonies = new Money(5000);
             var account = NewAccount(fiftyMonies);
 
-            account = account.Withdraw(fiftyMonies);
+            account = account.Withdraw(fiftyMonies, DateTimeOffset.Now);
 
             var actualBalance = account.State.CurrentBalance;
             var expectedBalance = Money.Zero;
@@ -41,14 +41,15 @@ namespace EventSourcedBank.Domain.Tests.Unit
             var hundredMonies = new Money(10000);
             var account = NewAccount(fiftyMonies);
 
-            Assert.Throws<InsufficientFundsException>(() => account = account.Withdraw(hundredMonies));
+            Assert.Throws<InsufficientFundsException>(
+                () => account = account.Withdraw(hundredMonies, DateTimeOffset.Now));
         }
 
         private static BankAccount NewAccount(Money monies)
         {
-            var bankAccount = BankAccount.Create(AccountId.NewId(), DateTimeOffset.Now);
+            var bankAccount = BankAccount.Create(AccountId.NewId(), DateTimeOffset.UtcNow);
 
-            return bankAccount.Deposit(monies);
+            return bankAccount.Deposit(monies, DateTimeOffset.Now);
         }
     }
 }

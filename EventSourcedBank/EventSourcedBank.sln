@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4740C828
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Application.Tests.EndToEnd", "EventSourcedBank.Application.Tests.EndToEnd\EventSourcedBank.Application.Tests.EndToEnd.csproj", "{E241F578-EBFF-45F0-AA30-AB390ABE9495}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Data.Write.Tests.Integration", "EventSourcedBank.Data.Write.Tests.Integration\EventSourcedBank.Data.Write.Tests.Integration.csproj", "{CFAD388D-0530-4D32-8139-FD13AACB0CC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E241F578-EBFF-45F0-AA30-AB390ABE9495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFAD388D-0530-4D32-8139-FD13AACB0CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFAD388D-0530-4D32-8139-FD13AACB0CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFAD388D-0530-4D32-8139-FD13AACB0CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFAD388D-0530-4D32-8139-FD13AACB0CC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +60,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CC97A1BA-0776-4C1D-96C3-46EFFDC22B8D} = {4740C828-C721-4D18-9C8F-B29CABBFBABD}
 		{E241F578-EBFF-45F0-AA30-AB390ABE9495} = {4740C828-C721-4D18-9C8F-B29CABBFBABD}
+		{CFAD388D-0530-4D32-8139-FD13AACB0CC6} = {4740C828-C721-4D18-9C8F-B29CABBFBABD}
 	EndGlobalSection
 EndGlobal

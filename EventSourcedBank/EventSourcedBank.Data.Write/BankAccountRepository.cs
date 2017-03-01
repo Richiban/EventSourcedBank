@@ -6,17 +6,24 @@ namespace EventSourcedBank.Data.Write
 {
     public sealed class BankAccountRepository : IBankAccountRepository
     {
-        private static readonly Dictionary<AccountId, BankAccount> Store =
-            new Dictionary<AccountId, BankAccount>();
+        private static readonly Dictionary<AccountId, EventStream<BankAccountEvent>> Store =
+            new Dictionary<AccountId, EventStream<BankAccountEvent>>();
 
         public void Save(BankAccount bankAccount)
         {
             Store[bankAccount.Id] = bankAccount;
-            BankAccountStateRepository.Store[bankAccount.Id.Value] = new BankAccountData(
+
+            //Simultaneously update the read store
+            BankAccountStateReader.Store[bankAccount.Id.Value] = new BankAccountData(
                 bankAccount.Id.Value,
-                bankAccount.State.CurrentBalance.DecimalValue);
+                bankAccount.State.CurrentBalance.Value);
         }
 
-        public BankAccount Retrieve(AccountId accountId) => Store[accountId];
+        public BankAccount Retrieve(AccountId accountId)
+        {
+            var retrievedEvents = Store[accountId];
+
+            return BankAccount.Restore(accountId, retrievedEvents);
+        }
     }
 }

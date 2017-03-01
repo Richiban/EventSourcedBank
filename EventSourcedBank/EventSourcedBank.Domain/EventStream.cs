@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace EventSourcedBank.Domain
 {
-    public abstract class EventStream<T> : IEnumerable<T> where T : DomainEvent
+    public abstract class EventStream<T> : IReadOnlyCollection<T> where T : DomainEvent
     {
         protected readonly ImmutableList<T> Events;
 
@@ -18,5 +18,6 @@ namespace EventSourcedBank.Domain
 
         public IEnumerator<T> GetEnumerator() => Events.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        public int Count => Events.Count;
     }
 }

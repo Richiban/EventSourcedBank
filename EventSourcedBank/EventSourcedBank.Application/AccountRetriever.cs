@@ -5,6 +5,6 @@ namespace EventSourcedBank.Application
     public sealed class AccountRetriever
     {
         public BankAccountData Retrieve(BankAccountStateQuery bankAccountStateQuery)
-            => new BankAccountStateRepository().Retrieve(bankAccountStateQuery.AccountId);
+            => new BankAccountStateReader().Retrieve(bankAccountStateQuery.AccountId);
     }
 }
