@@ -36,7 +36,7 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
         {
             var startingBalance = new Money(5000);
 
-            var bankAccount = BankAccount.Create(id, DateTimeOffset.UtcNow).Deposit(startingBalance, DateTimeOffset.Now);
+            var bankAccount = BankAccount.Factory.OpenNewAccount(id, DateTimeOffset.UtcNow).Deposit(startingBalance, DateTimeOffset.Now);
 
             bankAccount.State.CurrentBalance.Should().Be(startingBalance);
 

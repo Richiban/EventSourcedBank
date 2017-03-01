@@ -17,7 +17,7 @@ namespace EventSourcedBank.Application
         {
             var accountId = new AccountId(command.AccountId);
 
-            var account = BankAccount.Create(accountId, DateTimeOffset.UtcNow);
+            var account = BankAccount.Factory.OpenNewAccount(accountId, DateTimeOffset.UtcNow);
 
             _repository.Save(account);
         }

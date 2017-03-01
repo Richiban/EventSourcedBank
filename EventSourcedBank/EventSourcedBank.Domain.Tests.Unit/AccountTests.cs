@@ -47,7 +47,7 @@ namespace EventSourcedBank.Domain.Tests.Unit
 
         private static BankAccount NewAccount(Money monies)
         {
-            var bankAccount = BankAccount.Create(AccountId.NewId(), DateTimeOffset.UtcNow);
+            var bankAccount = BankAccount.Factory.OpenNewAccount(AccountId.NewId(), DateTimeOffset.UtcNow);
 
             return bankAccount.Deposit(monies, DateTimeOffset.Now);
         }

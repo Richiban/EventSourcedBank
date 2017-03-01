@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 
 namespace EventSourcedBank.Domain
@@ -7,21 +8,25 @@ namespace EventSourcedBank.Domain
     public sealed class BankAccount : EventStream<BankAccountEvent>
     {
         private static readonly BankAccountState InitialState = new BankAccountState(Money.Zero);
+        private int GetNextEventId() => Events.Count;
 
         private BankAccount ApplyEvent(BankAccountEvent evt)
             => new BankAccount(Id, Events.Add(evt), evt.ApplyTo(State));
 
-        private BankAccount(AccountId id, IEnumerable<BankAccountEvent> events, BankAccountState state)
+        private BankAccount(AccountId id, ImmutableList<BankAccountEvent> events, BankAccountState state)
             : base(events)
         {
             State = state;
             Id = id;
         }
 
-        public BankAccount Deposit(Money amount, DateTimeOffset requestedOn)
-            => ApplyEvent(new FundsDeposited(GetNextEventId(), requestedOn, amount));
+        public AccountId Id { get; }
+        public BankAccountState State { get; }
 
-        private int GetNextEventId() => Events.Count;
+        public BankAccount Deposit(Money amount, DateTimeOffset requestedOn)
+        {
+            return ApplyEvent(new FundsDeposited(GetNextEventId(), requestedOn, amount));
+        }
 
         public BankAccount Withdraw(Money amount, DateTimeOffset requestedOn)
         {
@@ -33,17 +38,24 @@ namespace EventSourcedBank.Domain
             return ApplyEvent(new FundsWithdrawn(GetNextEventId(), requestedOn, amount));
         }
 
-        public static BankAccount Create(AccountId id, DateTimeOffset createdOn)
-            => new BankAccount(id, new[] { new AccountCreated(id: 0, createdOn: createdOn) }, InitialState);
-
-        public static BankAccount Restore(AccountId id, IEnumerable<BankAccountEvent> events)
+        public static class Factory
         {
-            var initialisedAccount = new BankAccount(id, Enumerable.Empty<BankAccountEvent>(), InitialState);
+            public static BankAccount OpenNewAccount(AccountId id, DateTimeOffset createdOn)
+                =>
+                new BankAccount(
+                    id,
+                    ImmutableList.Create<BankAccountEvent>(new AccountCreated(id: 0, createdOn: createdOn)),
+                    InitialState);
 
-            return events.Aggregate(initialisedAccount, (account, evt) => account.ApplyEvent(evt));
+            public static BankAccount Restore(AccountId id, IEnumerable<BankAccountEvent> events)
+            {
+                var initialisedAccount = new BankAccount(
+                    id,
+                    ImmutableList.Create<BankAccountEvent>(),
+                    InitialState);
+
+                return events.Aggregate(initialisedAccount, (account, evt) => account.ApplyEvent(evt));
+            }
         }
-
-        public BankAccountState State { get; }
-        public AccountId Id { get; }
     }
 }

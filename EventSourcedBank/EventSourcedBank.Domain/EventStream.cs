@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 
 namespace EventSourcedBank.Domain
 {
@@ -9,11 +8,11 @@ namespace EventSourcedBank.Domain
     {
         protected readonly ImmutableList<T> Events;
 
-        protected EventStream() : this(Enumerable.Empty<T>()) { }
+        protected EventStream() : this(ImmutableList.Create<T>()) { }
 
-        protected EventStream(IEnumerable<T> events)
+        protected EventStream(ImmutableList<T> events)
         {
-            Events = events.ToImmutableList();
+            Events = events;
         }
 
         public IEnumerator<T> GetEnumerator() => Events.GetEnumerator();

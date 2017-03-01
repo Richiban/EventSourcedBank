@@ -23,7 +23,7 @@ namespace EventSourcedBank.Data.Write
         {
             var retrievedEvents = Store[accountId];
 
-            return BankAccount.Restore(accountId, retrievedEvents);
+            return BankAccount.Factory.Restore(accountId, retrievedEvents);
         }
     }
 }
