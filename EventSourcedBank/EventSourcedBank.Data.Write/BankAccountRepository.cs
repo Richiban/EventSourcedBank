@@ -16,6 +16,7 @@ namespace EventSourcedBank.Data.Write
             //Simultaneously update the read store
             BankAccountStateReader.Store[bankAccount.Id.Value] = new BankAccountData(
                 bankAccount.Id.Value,
+                bankAccount.State.AccountOpenedOn.Value,
                 bankAccount.State.CurrentBalance.Value);
         }
 

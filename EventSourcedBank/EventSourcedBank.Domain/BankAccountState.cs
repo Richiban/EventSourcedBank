@@ -2,15 +2,15 @@
 {
     public sealed class BankAccountState
     {
-        public BankAccountState(Money currentBalance, EventDateTime eventOn)
+        public BankAccountState(Money currentBalance, EventDateTime accountOpenedOn)
         {
             CurrentBalance = currentBalance;
-            EventOn = eventOn;
+            AccountOpenedOn = accountOpenedOn;
         }
 
         public Money CurrentBalance { get; }
-        public EventDateTime EventOn { get; }
+        public EventDateTime AccountOpenedOn { get; }
 
-        public BankAccountState WithBalance(Money newBalance) => new BankAccountState(newBalance, EventOn);
+        public BankAccountState WithBalance(Money newBalance) => new BankAccountState(newBalance, AccountOpenedOn);
     }
 }
