@@ -43,7 +43,9 @@
     <Compile Include="AccountRetriever.cs" />
     <Compile Include="BankAccountStateQuery.cs" />
     <Compile Include="CashMachine.cs" />
+    <Compile Include="Clock.cs" />
     <Compile Include="CreateNewAccountCommand.cs" />
+    <Compile Include="IClock.cs" />
     <Compile Include="MakeDepositCommand.cs" />
     <Compile Include="MakeWithdrawalCommand.cs" />
     <Compile Include="NewAccountCreator.cs" />

@@ -7,8 +7,7 @@ namespace EventSourcedBank.Domain
 {
     public sealed class BankAccount : EventStream<BankAccountEvent>
     {
-        private static readonly BankAccountState InitialState = new BankAccountState(Money.Zero);
-        private int GetNextEventId() => Events.Count;
+        private EventId GetNextEventId() => new EventId(Events.Count);
 
         private BankAccount ApplyEvent(BankAccountEvent evt)
             => new BankAccount(Id, Events.Add(evt), evt.ApplyTo(State));
@@ -23,12 +22,12 @@ namespace EventSourcedBank.Domain
         public AccountId Id { get; }
         public BankAccountState State { get; }
 
-        public BankAccount Deposit(Money amount, DateTimeOffset requestedOn)
+        public BankAccount Deposit(Money amount, EventDateTime requestedOn)
         {
             return ApplyEvent(new FundsDeposited(GetNextEventId(), requestedOn, amount));
         }
 
-        public BankAccount Withdraw(Money amount, DateTimeOffset requestedOn)
+        public BankAccount Withdraw(Money amount, EventDateTime requestedOn)
         {
             var sufficientFunds = State.CurrentBalance >= amount;
 
@@ -40,11 +39,11 @@ namespace EventSourcedBank.Domain
 
         public static class Factory
         {
-            public static BankAccount OpenNewAccount(AccountId id, DateTimeOffset createdOn)
+            public static BankAccount OpenNewAccount(AccountId id, EventDateTime eventOn)
                 =>
                 new BankAccount(
                     id,
-                    ImmutableList.Create<BankAccountEvent>(new AccountCreated(id: 0, createdOn: createdOn)),
+                    ImmutableList.Create<BankAccountEvent>(new AccountCreated(default(EventId), eventOn)),
                     InitialState);
 
             public static BankAccount Restore(AccountId id, IEnumerable<BankAccountEvent> events)
@@ -56,6 +55,10 @@ namespace EventSourcedBank.Domain
 
                 return events.Aggregate(initialisedAccount, (account, evt) => account.ApplyEvent(evt));
             }
+
+            private static readonly BankAccountState InitialState = new BankAccountState(
+                Money.Zero,
+                default(EventDateTime));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace EventSourcedBank.Application
 
             var account = _accountRepository.Retrieve(accountId);
 
-            _accountRepository.Save(account.Deposit(amountToDeposit, DateTimeOffset.Now));
+            _accountRepository.Save(account.Deposit(amountToDeposit, GetNow()));
         }
 
         public void Withdraw(MakeWithdrawalCommand makeWithdrawalCommand)
@@ -30,7 +30,9 @@ namespace EventSourcedBank.Application
 
             var account = _accountRepository.Retrieve(accountId);
 
-            _accountRepository.Save(account.Withdraw(amountToWithdraw, DateTimeOffset.Now));
+            _accountRepository.Save(account.Withdraw(amountToWithdraw, GetNow()));
         }
+
+        private EventDateTime GetNow() => new EventDateTime(DateTimeOffset.Now);
     }
 }

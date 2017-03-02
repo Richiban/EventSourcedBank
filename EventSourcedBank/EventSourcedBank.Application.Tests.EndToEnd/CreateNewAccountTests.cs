@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data.SqlTypes;
-using System.Runtime.InteropServices;
 using EventSourcedBank.Data.Write;
 using FluentAssertions;
 using NUnit.Framework;
@@ -18,8 +16,9 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
         public void SetUp()
         {
             var bankAccountRepository = new BankAccountRepository();
+            var clock = new Clock();
 
-            _newAccountCreator = new NewAccountCreator(bankAccountRepository);
+            _newAccountCreator = new NewAccountCreator(bankAccountRepository, clock);
             _accountRetriever = new AccountRetriever();
             _cashMachine = new CashMachine(bankAccountRepository);
         }

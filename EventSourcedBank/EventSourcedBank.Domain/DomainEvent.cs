@@ -1,16 +1,14 @@
-﻿using System;
-
-namespace EventSourcedBank.Domain
+﻿namespace EventSourcedBank.Domain
 {
     public abstract class DomainEvent
     {
-        protected DomainEvent(int id, DateTimeOffset occuredOn)
+        protected DomainEvent(EventId id, EventDateTime occuredOn)
         {
             Id = id;
             OccuredOn = occuredOn;
         }
 
-        public int Id { get; }
-        public DateTimeOffset OccuredOn { get; }
+        public EventId Id { get; }
+        public EventDateTime OccuredOn { get; }
     }
 }

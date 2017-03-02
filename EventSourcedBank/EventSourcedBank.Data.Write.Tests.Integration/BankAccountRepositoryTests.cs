@@ -36,12 +36,17 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
         {
             var startingBalance = new Money(5000);
 
-            var bankAccount = BankAccount.Factory.OpenNewAccount(id, DateTimeOffset.UtcNow).Deposit(startingBalance, DateTimeOffset.Now);
+            var createdDate = GetUtcNow();
+
+            var bankAccount = BankAccount.Factory.OpenNewAccount(id, createdDate)
+                .Deposit(startingBalance, createdDate);
 
             bankAccount.State.CurrentBalance.Should().Be(startingBalance);
 
             return bankAccount;
         }
+
+        private static EventDateTime GetUtcNow() => new EventDateTime(DateTimeOffset.UtcNow);
 
         public void AssertSame(BankAccount original, BankAccount toCompare)
         {

@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace EventSourcedBank.Domain
+﻿namespace EventSourcedBank.Domain
 {
     public sealed class FundsDeposited : BankAccountEvent
     {
-        public FundsDeposited(int id, DateTimeOffset occuredOn, Money amount) : base(id, occuredOn)
+        public FundsDeposited(EventId id, EventDateTime occuredOn, Money amount) : base(id, occuredOn)
         {
             AmountDeposited = amount;
         }
@@ -12,10 +10,6 @@ namespace EventSourcedBank.Domain
         public Money AmountDeposited { get; }
 
         public override BankAccountState ApplyTo(BankAccountState state)
-        {
-            var newBalance = AmountDeposited + state.CurrentBalance;
-
-            return new BankAccountState(newBalance);
-        }
+            => state.WithBalance(AmountDeposited + state.CurrentBalance);
     }
 }

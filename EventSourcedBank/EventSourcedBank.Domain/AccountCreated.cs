@@ -1,16 +1,14 @@
-﻿using System;
-
-namespace EventSourcedBank.Domain
+﻿namespace EventSourcedBank.Domain
 {
     public sealed class AccountCreated : BankAccountEvent
     {
-        public AccountCreated(int id, DateTimeOffset createdOn) : base(id, createdOn)
+        public AccountCreated(EventId id, EventDateTime eventOn) : base(id, eventOn)
         {
-            CreatedOn = createdOn;
+            EventOn = eventOn;
         }
 
         public override BankAccountState ApplyTo(BankAccountState state) => state;
 
-        public DateTimeOffset CreatedOn { get; }
+        public EventDateTime EventOn { get; }
     }
 }

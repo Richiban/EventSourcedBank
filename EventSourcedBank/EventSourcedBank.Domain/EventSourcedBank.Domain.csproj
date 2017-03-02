@@ -49,6 +49,8 @@
     <Compile Include="BankAccountEvent.cs" />
     <Compile Include="BankAccount.cs" />
     <Compile Include="BankAccountState.cs" />
+    <Compile Include="EventDateTime.cs" />
+    <Compile Include="EventId.cs" />
     <Compile Include="EventStream.cs" />
     <Compile Include="DomainEvent.cs" />
     <Compile Include="FundsDeposited.cs" />

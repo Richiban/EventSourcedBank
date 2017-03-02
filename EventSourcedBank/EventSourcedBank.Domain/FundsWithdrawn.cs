@@ -4,7 +4,7 @@ namespace EventSourcedBank.Domain
 {
     public sealed class FundsWithdrawn : BankAccountEvent
     {
-        public FundsWithdrawn(int id, DateTimeOffset occuredOn, Money amount) : base(id, occuredOn)
+        public FundsWithdrawn(EventId id, EventDateTime occuredOn, Money amount) : base(id, occuredOn)
         {
             AmountWithdrawn = amount;
         }
@@ -12,6 +12,6 @@ namespace EventSourcedBank.Domain
         public Money AmountWithdrawn { get; }
 
         public override BankAccountState ApplyTo(BankAccountState state)
-            => new BankAccountState(state.CurrentBalance - AmountWithdrawn);
+            => state.WithBalance(state.CurrentBalance - AmountWithdrawn);
     }
 }
