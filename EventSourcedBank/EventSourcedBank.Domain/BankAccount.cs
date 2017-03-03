@@ -24,17 +24,39 @@ namespace EventSourcedBank.Domain
 
         public BankAccount Deposit(Money amount, EventDateTime requestedOn)
         {
+            if (State.IsFrozen)
+                throw new AccountIsFrozenException();
+
             return ApplyEvent(new FundsDeposited(GetNextEventId(), requestedOn, amount));
         }
 
         public BankAccount Withdraw(Money amount, EventDateTime requestedOn)
         {
+            if (State.IsFrozen)
+                throw new AccountIsFrozenException();
+
             var sufficientFunds = State.CurrentBalance >= amount;
 
             if (!sufficientFunds)
                 throw new InsufficientFundsException();
 
             return ApplyEvent(new FundsWithdrawn(GetNextEventId(), requestedOn, amount));
+        }
+
+        public BankAccount Freeze(EventDateTime requestedOn)
+        {
+            if (State.IsFrozen)
+                return this;
+
+            return ApplyEvent(new AccountFrozen(GetNextEventId(), requestedOn));
+        }
+
+        public BankAccount UnFreeze(EventDateTime requestedOn)
+        {
+            if (State.IsFrozen == false)
+                return this;
+
+            return ApplyEvent(new AccountUnfrozen(GetNextEventId(), requestedOn));
         }
 
         public static class Factory
@@ -58,7 +80,8 @@ namespace EventSourcedBank.Domain
 
             private static readonly BankAccountState InitialState = new BankAccountState(
                 Money.Zero,
-                default(EventDateTime));
+                default(EventDateTime),
+                isFrozen: false);
         }
     }
 }

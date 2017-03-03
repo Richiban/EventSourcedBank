@@ -28,9 +28,16 @@ namespace EventSourcedBank.Application
             var amountToWithdraw = new Money(makeWithdrawalCommand.AmountInPence);
             var accountId = new AccountId(makeWithdrawalCommand.AccountId);
 
-            var account = _accountRepository.Retrieve(accountId);
+            try
+            {
+                var account = _accountRepository.Retrieve(accountId);
 
-            _accountRepository.Save(account.Withdraw(amountToWithdraw, GetNow()));
+                _accountRepository.Save(account.Withdraw(amountToWithdraw, GetNow()));
+            }
+            catch (Domain.AccountIsFrozenException)
+            {
+                throw new Application.AccountIsFrozenException();
+            }
         }
 
         private EventDateTime GetNow() => new EventDateTime(DateTimeOffset.Now);

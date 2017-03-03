@@ -40,16 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountIsFrozenException.cs" />
     <Compile Include="AccountRetriever.cs" />
     <Compile Include="BankAccountStateQuery.cs" />
     <Compile Include="CashMachine.cs" />
     <Compile Include="Clock.cs" />
     <Compile Include="CreateNewAccountCommand.cs" />
+    <Compile Include="CustomerServiceRepresentative.cs" />
+    <Compile Include="FreezeAccountCommand.cs" />
     <Compile Include="IClock.cs" />
     <Compile Include="MakeDepositCommand.cs" />
     <Compile Include="MakeWithdrawalCommand.cs" />
     <Compile Include="NewAccountCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnfreezeAccountCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj">

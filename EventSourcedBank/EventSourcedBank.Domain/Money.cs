@@ -15,6 +15,8 @@
         public static bool operator >=(Money left, Money right) => left.Value >= right.Value;
         public static bool operator <(Money left, Money right) => left.Value < right.Value;
         public static bool operator <=(Money left, Money right) => left.Value <= right.Value;
+        public static bool operator ==(Money left, Money right) => left.Value == right.Value;
+        public static bool operator !=(Money left, Money right) => left.Value != right.Value;
 
         public static Money Zero { get; } = new Money();
     }

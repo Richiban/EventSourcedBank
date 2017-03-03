@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EventSourcedBank.Domain;
-using FluentAssertions;
 using NUnit.Framework;
+using static PowerAssert.PAssert;
 
 namespace EventSourcedBank.Data.Write.Tests.Integration
 {
@@ -40,8 +36,8 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
 
             var bankAccount = BankAccount.Factory.OpenNewAccount(id, createdDate)
                 .Deposit(startingBalance, createdDate);
-
-            bankAccount.State.CurrentBalance.Should().Be(startingBalance);
+            
+            IsTrue(() => bankAccount.State.CurrentBalance == startingBalance);
 
             return bankAccount;
         }

@@ -14,10 +14,7 @@ namespace EventSourcedBank.Data.Write
             Store[bankAccount.Id] = bankAccount;
 
             //Simultaneously update the read store
-            BankAccountStateReader.Store[bankAccount.Id.Value] = new BankAccountData(
-                bankAccount.Id.Value,
-                bankAccount.State.AccountOpenedOn.Value,
-                bankAccount.State.CurrentBalance.Value);
+            BankAccountStateReader.Store[bankAccount.Id.Value] = MapBankAccountData(bankAccount);
         }
 
         public BankAccount Retrieve(AccountId accountId)
@@ -26,5 +23,13 @@ namespace EventSourcedBank.Data.Write
 
             return BankAccount.Factory.Restore(accountId, retrievedEvents);
         }
+
+        private static BankAccountData MapBankAccountData(BankAccount bankAccount)
+            =>
+            new BankAccountData(
+                bankAccount.Id.Value,
+                bankAccount.State.AccountOpenedOn.Value,
+                bankAccount.State.CurrentBalance.Value,
+                bankAccount.State.IsFrozen);
     }
 }

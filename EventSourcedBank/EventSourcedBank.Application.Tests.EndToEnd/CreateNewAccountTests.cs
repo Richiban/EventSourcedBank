@@ -1,7 +1,7 @@
 ﻿using System;
 using EventSourcedBank.Data.Write;
-using FluentAssertions;
 using NUnit.Framework;
+using static PowerAssert.PAssert;
 
 namespace EventSourcedBank.Application.Tests.EndToEnd
 {
@@ -38,8 +38,8 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
 
             var actual = _accountRetriever.Retrieve(new BankAccountStateQuery(accountId));
 
-            actual.Id.Should().Be(accountId);
-            actual.Balance.Should().Be(0);
+            IsTrue(() => actual.Id == accountId);
+            IsTrue(() => actual.Balance == 0);
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
 
             var actual = _accountRetriever.Retrieve(new BankAccountStateQuery(accountId));
 
-            actual.Id.Should().Be(accountId);
-            actual.Balance.Should().Be(5000);
+            IsTrue(() => actual.Id == accountId);
+            IsTrue(() => actual.Balance == 5000);
         }
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
 
             var actual = _accountRetriever.Retrieve(new BankAccountStateQuery(accountId));
 
-            actual.Id.Should().Be(accountId);
-            actual.Balance.Should().Be(3000);
+            IsTrue(() => actual.Id == accountId);
+            IsTrue(() => actual.Balance == 3000);
         }
     }
 }

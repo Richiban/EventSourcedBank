@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountCreated.cs" />
+    <Compile Include="AccountFrozen.cs" />
     <Compile Include="AccountId.cs" />
+    <Compile Include="AccountIsFrozenException.cs" />
+    <Compile Include="AccountUnfrozen.cs" />
     <Compile Include="BankAccountEvent.cs" />
     <Compile Include="BankAccount.cs" />
     <Compile Include="BankAccountState.cs" />
