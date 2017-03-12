@@ -2,6 +2,7 @@
 using EventSourcedBank.Domain;
 using NUnit.Framework;
 using static PowerAssert.PAssert;
+using Newtonsoft.Json;
 
 namespace EventSourcedBank.Data.Write.Tests.Integration
 {
@@ -17,13 +18,13 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
         }
 
         [Test]
-        public void Given_When_Then()
+        public void When_I_save_a_bank_account_Then_I_can_retrieve_it()
         {
             var id = AccountId.NewId();
             var original = GetBankAccount(id);
 
             _bankAccountRepository.Save(original);
-            var retrieved = _bankAccountRepository.Retrieve(original.Id);
+            var retrieved = _bankAccountRepository.Retrieve(id);
 
             AssertSame(original, retrieved);
         }
@@ -34,10 +35,9 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
 
             var createdDate = GetUtcNow();
 
-            var bankAccount = BankAccount.Factory.OpenNewAccount(id, createdDate)
-                .Deposit(startingBalance, createdDate);
+            var bankAccount = BankAccount.Factory.OpenNewAccount(id, createdDate);
             
-            IsTrue(() => bankAccount.State.CurrentBalance == startingBalance);
+            //IsTrue(() => bankAccount.State.CurrentBalance == startingBalance);
 
             return bankAccount;
         }
@@ -46,8 +46,10 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
 
         public void AssertSame(BankAccount original, BankAccount toCompare)
         {
-            Assert.That(toCompare.Id, Is.EqualTo(original.Id));
-            Assert.That(toCompare.State.CurrentBalance, Is.EqualTo(original.State.CurrentBalance));
+            var left = JsonConvert.SerializeObject(original);
+            var right = JsonConvert.SerializeObject(toCompare);
+
+            IsTrue(() => left == right);
         }
     }
 }

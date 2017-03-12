@@ -4,7 +4,8 @@ namespace EventSourcedBank.Domain
 {
     public sealed class FundsWithdrawn : BankAccountEvent
     {
-        public FundsWithdrawn(EventId id, EventDateTime occuredOn, Money amount) : base(id, occuredOn)
+        public FundsWithdrawn(AccountId appliesTo, EventId id, EventDateTime occuredOn, Money amount)
+            : base(appliesTo, id, occuredOn)
         {
             AmountWithdrawn = amount;
         }

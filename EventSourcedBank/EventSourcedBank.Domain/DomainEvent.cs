@@ -2,13 +2,13 @@
 {
     public abstract class DomainEvent
     {
-        protected DomainEvent(EventId id, EventDateTime occuredOn)
+        protected DomainEvent(EventId id, EventDateTime occurredOn)
         {
             Id = id;
-            OccuredOn = occuredOn;
+            OccurredOn = occurredOn;
         }
 
         public EventId Id { get; }
-        public EventDateTime OccuredOn { get; }
+        public EventDateTime OccurredOn { get; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace EventSourcedBank.Domain
+﻿using System;
+
+namespace EventSourcedBank.Domain
 {
     public struct EventId
     {
@@ -7,6 +9,11 @@
             Value = value;
         }
 
-        private int Value { get; }
+        public int Value { get; }
+
+        internal static EventId NewId()
+        {
+            return new EventId(0);
+        }
     }
 }

@@ -18,6 +18,10 @@
         public static bool operator ==(Money left, Money right) => left.Value == right.Value;
         public static bool operator !=(Money left, Money right) => left.Value != right.Value;
 
+        public override bool Equals(object other) => Equals((Money)other);
+        public bool Equals(Money other) => other.Value == Value;
+        public override int GetHashCode() => Value;
+
         public static Money Zero { get; } = new Money();
     }
 }

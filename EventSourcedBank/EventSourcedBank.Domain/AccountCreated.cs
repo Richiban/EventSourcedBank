@@ -2,13 +2,11 @@
 {
     public sealed class AccountCreated : BankAccountEvent
     {
-        public AccountCreated(EventId id, EventDateTime eventOn) : base(id, eventOn)
+        public AccountCreated(AccountId appliesTo, EventId id, EventDateTime occurredOn)
+            : base(appliesTo,  id, occurredOn)
         {
-            EventOn = eventOn;
         }
 
         public override BankAccountState ApplyTo(BankAccountState state) => state;
-
-        public EventDateTime EventOn { get; }
     }
 }

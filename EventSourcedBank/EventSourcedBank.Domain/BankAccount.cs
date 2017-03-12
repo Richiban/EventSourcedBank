@@ -27,7 +27,7 @@ namespace EventSourcedBank.Domain
             if (State.IsFrozen)
                 throw new AccountIsFrozenException();
 
-            return ApplyEvent(new FundsDeposited(GetNextEventId(), requestedOn, amount));
+            return ApplyEvent(new FundsDeposited(Id, GetNextEventId(), requestedOn, amount));
         }
 
         public BankAccount Withdraw(Money amount, EventDateTime requestedOn)
@@ -40,7 +40,7 @@ namespace EventSourcedBank.Domain
             if (!sufficientFunds)
                 throw new InsufficientFundsException();
 
-            return ApplyEvent(new FundsWithdrawn(GetNextEventId(), requestedOn, amount));
+            return ApplyEvent(new FundsWithdrawn(Id, GetNextEventId(), requestedOn, amount));
         }
 
         public BankAccount Freeze(EventDateTime requestedOn)
@@ -48,7 +48,7 @@ namespace EventSourcedBank.Domain
             if (State.IsFrozen)
                 return this;
 
-            return ApplyEvent(new AccountFrozen(GetNextEventId(), requestedOn));
+            return ApplyEvent(new AccountFrozen(Id, GetNextEventId(), requestedOn));
         }
 
         public BankAccount UnFreeze(EventDateTime requestedOn)
@@ -56,7 +56,7 @@ namespace EventSourcedBank.Domain
             if (State.IsFrozen == false)
                 return this;
 
-            return ApplyEvent(new AccountUnfrozen(GetNextEventId(), requestedOn));
+            return ApplyEvent(new AccountUnfrozen(Id, GetNextEventId(), requestedOn));
         }
 
         public static class Factory
@@ -65,7 +65,7 @@ namespace EventSourcedBank.Domain
                 =>
                 new BankAccount(
                     id,
-                    ImmutableList.Create<BankAccountEvent>(new AccountCreated(default(EventId), eventOn)),
+                    ImmutableList.Create<BankAccountEvent>(new AccountCreated(id, EventId.NewId(), eventOn)),
                     InitialState);
 
             public static BankAccount Restore(AccountId id, IEnumerable<BankAccountEvent> events)
