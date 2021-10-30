@@ -5,8 +5,8 @@ namespace EventSourcedBank.Data.Read
 {
     public sealed class BankAccountStateReader : IBankAccountStateReader
     {
-        internal static readonly Dictionary<Guid, BankAccountData> Store =
-            new Dictionary<Guid, BankAccountData>();
+        public static readonly Dictionary<Guid, BankAccountData> Store =
+            new();
 
         public BankAccountData Retrieve(Guid accountId) => Store[accountId];
     }

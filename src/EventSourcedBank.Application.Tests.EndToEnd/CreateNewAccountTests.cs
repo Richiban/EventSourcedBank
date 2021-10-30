@@ -8,9 +8,9 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
     [TestFixture]
     public class CreateNewAccountTests
     {
-        private NewAccountCreator _newAccountCreator;
-        private AccountRetriever _accountRetriever;
-        private CashMachine _cashMachine;
+        private NewAccountCreator _newAccountCreator = null!;
+        private AccountRetriever _accountRetriever = null!;
+        private CashMachine _cashMachine = null!;
 
         [SetUp]
         public void SetUp()

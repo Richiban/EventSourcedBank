@@ -1,6 +1,8 @@
-﻿namespace EventSourcedBank.Domain
+﻿using System;
+
+namespace EventSourcedBank.Domain
 {
-    public struct Money
+    public struct Money : IEquatable<Money>
     {
         public Money(int value)
         {
@@ -18,10 +20,16 @@
         public static bool operator ==(Money left, Money right) => left.Value == right.Value;
         public static bool operator !=(Money left, Money right) => left.Value != right.Value;
 
-        public override bool Equals(object other) => Equals((Money)other);
+        public override bool Equals(object? other) =>
+            other switch
+            {
+                Money m => Equals(m),
+                _ => false
+            };
+
         public bool Equals(Money other) => other.Value == Value;
         public override int GetHashCode() => Value;
 
-        public static Money Zero { get; } = new Money();
+        public static Money Zero { get; } = new (0);
     }
 }

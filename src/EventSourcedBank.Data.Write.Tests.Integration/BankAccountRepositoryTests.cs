@@ -9,7 +9,7 @@ namespace EventSourcedBank.Data.Write.Tests.Integration
     [TestFixture]
     public class BankAccountRepositoryTests
     {
-        private BankAccountRepository _bankAccountRepository;
+        private BankAccountRepository _bankAccountRepository = null!;
 
         [SetUp]
         public void SetUp()

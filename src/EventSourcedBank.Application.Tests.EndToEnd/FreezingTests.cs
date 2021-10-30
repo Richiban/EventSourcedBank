@@ -8,10 +8,10 @@ namespace EventSourcedBank.Application.Tests.EndToEnd
     [TestFixture]
     public sealed class FreezingTests
     {
-        private NewAccountCreator _newAccountCreator;
-        private AccountRetriever _accountRetriever;
-        private CashMachine _cashMachine;
-        private CustomerServiceRepresentative _customerServiceRepresentative;
+        private NewAccountCreator _newAccountCreator = null!;
+        private AccountRetriever _accountRetriever = null!;
+        private CashMachine _cashMachine = null!;
+        private CustomerServiceRepresentative _customerServiceRepresentative = null!;
 
         [SetUp]
         public void SetUp()

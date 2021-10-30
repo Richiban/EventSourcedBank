@@ -76,7 +76,7 @@ namespace EventSourcedBank.Data.Write
 
         private static BankAccountEvent DeserializeEvent(string eventType, string dataString)
         {
-            dynamic obj = JsonConvert.DeserializeObject(dataString);
+            dynamic obj = JsonConvert.DeserializeObject(dataString)!;
 
             switch (eventType)
             {
