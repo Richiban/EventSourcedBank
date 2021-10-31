@@ -2,13 +2,8 @@
 
 namespace EventSourcedBank.Domain
 {
-    public struct EventDateTime
+    public record EventDateTime(DateTimeOffset Value)
     {
-        public EventDateTime(DateTimeOffset value)
-        {
-            Value = value;
-        }
-
-        public DateTimeOffset Value { get; }
+        public static EventDateTime MinValue => new(DateTimeOffset.MinValue);
     }
 }

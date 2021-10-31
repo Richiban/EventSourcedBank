@@ -1,16 +1,12 @@
 ﻿namespace EventSourcedBank.Domain
 {
-    public sealed class FundsDeposited : BankAccountEvent
+    public sealed record FundsDeposited(
+        AccountId AppliesTo,
+        EventId Id,
+        EventDateTime OccuredOn,
+        Money AmountDeposited) : BankAccountEvent(AppliesTo, Id, OccuredOn)
     {
-        public FundsDeposited(AccountId appliesTo, EventId id, EventDateTime occuredOn, Money amount) 
-            : base(appliesTo, id, occuredOn)
-        {
-            AmountDeposited = amount;
-        }
-
-        public Money AmountDeposited { get; }
-
-        public override BankAccountState ApplyTo(BankAccountState state)
-            => state.WithBalance(AmountDeposited + state.CurrentBalance);
+        public override BankAccountState ApplyTo(BankAccountState state) =>
+            state with { CurrentBalance = AmountDeposited + state.CurrentBalance };
     }
 }

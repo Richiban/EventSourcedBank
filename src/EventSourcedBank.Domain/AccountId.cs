@@ -2,15 +2,8 @@
 
 namespace EventSourcedBank.Domain
 {
-    public struct AccountId
+    public record AccountId(Guid Value)
     {
-        public AccountId(Guid value)
-        {
-            Value = value;
-        }
-
-        public Guid Value { get; }
-
-        public static AccountId NewId() => new AccountId(Guid.NewGuid());
+        public static AccountId NewId() => new(Guid.NewGuid());
     }
 }

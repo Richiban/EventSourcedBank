@@ -1,19 +1,7 @@
-﻿using System;
-
-namespace EventSourcedBank.Domain
+﻿namespace EventSourcedBank.Domain
 {
-    public struct EventId
+    public record EventId(int Value)
     {
-        public EventId(int value)
-        {
-            Value = value;
-        }
-
-        public int Value { get; }
-
-        internal static EventId NewId()
-        {
-            return new EventId(0);
-        }
+        internal static EventId NewId() => new(0);
     }
 }

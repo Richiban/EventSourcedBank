@@ -80,8 +80,8 @@ namespace EventSourcedBank.Domain
 
             private static readonly BankAccountState InitialState = new BankAccountState(
                 Money.Zero,
-                default(EventDateTime),
-                isFrozen: false);
+                EventDateTime.MinValue,
+                IsFrozen: false);
         }
     }
 }

@@ -1,18 +1,12 @@
-﻿using System;
-
-namespace EventSourcedBank.Domain
+﻿namespace EventSourcedBank.Domain
 {
-    public sealed class FundsWithdrawn : BankAccountEvent
+    public sealed record FundsWithdrawn(
+        AccountId AppliesTo,
+        EventId Id,
+        EventDateTime OccurredOn,
+        Money AmountWithdrawn) : BankAccountEvent(AppliesTo, Id, OccurredOn)
     {
-        public FundsWithdrawn(AccountId appliesTo, EventId id, EventDateTime occuredOn, Money amount)
-            : base(appliesTo, id, occuredOn)
-        {
-            AmountWithdrawn = amount;
-        }
-
-        public Money AmountWithdrawn { get; }
-
-        public override BankAccountState ApplyTo(BankAccountState state)
-            => state.WithBalance(state.CurrentBalance - AmountWithdrawn);
+        public override BankAccountState ApplyTo(BankAccountState state) =>
+            state with { CurrentBalance = state.CurrentBalance - AmountWithdrawn };
     }
 }

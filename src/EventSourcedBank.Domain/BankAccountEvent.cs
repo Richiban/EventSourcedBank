@@ -1,14 +1,10 @@
 ﻿namespace EventSourcedBank.Domain
 {
-    public abstract class BankAccountEvent : DomainEvent
+    public abstract record BankAccountEvent(
+        AccountId AppliesTo,
+        EventId Id,
+        EventDateTime OccurredOn) : DomainEvent(Id, OccurredOn)
     {
         public abstract BankAccountState ApplyTo(BankAccountState state);
-
-        protected BankAccountEvent(AccountId appliesTo, EventId id, EventDateTime occuredOn) : base(id, occuredOn)
-        {
-            AppliesTo = appliesTo;
-        }
-
-        public AccountId AppliesTo { get; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿namespace EventSourcedBank.Domain
 {
-    public sealed class AccountUnfrozen : BankAccountEvent
+    public sealed record AccountUnfrozen(
+        AccountId AppliesTo,
+        EventId Id,
+        EventDateTime OccurredOn) : BankAccountEvent(AppliesTo, Id, OccurredOn)
     {
-        public AccountUnfrozen(AccountId appliesTo, EventId id, EventDateTime occuredOn)
-            : base(appliesTo, id, occuredOn) {}
-
-        public override BankAccountState ApplyTo(BankAccountState state) => state.WithFrozen(false);
+        public override BankAccountState ApplyTo(BankAccountState state) =>
+            state with { IsFrozen = false };
     }
 }
