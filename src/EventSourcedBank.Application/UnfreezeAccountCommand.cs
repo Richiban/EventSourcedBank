@@ -2,13 +2,5 @@
 
 namespace EventSourcedBank.Application
 {
-    public sealed class UnfreezeAccountCommand
-    {
-        public Guid AccountId { get; }
-
-        public UnfreezeAccountCommand(Guid accountId)
-        {
-            AccountId = accountId;
-        }
-    }
+    public sealed record UnfreezeAccountCommand(Guid AccountId);
 }

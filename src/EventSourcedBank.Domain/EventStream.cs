@@ -18,5 +18,6 @@ namespace EventSourcedBank.Domain
         public IEnumerator<T> GetEnumerator() => Events.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         public int Count => Events.Count;
+        protected EventId GetNextEventId() => new EventId(Events.Count);
     }
 }

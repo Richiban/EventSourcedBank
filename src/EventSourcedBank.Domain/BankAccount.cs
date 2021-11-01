@@ -7,8 +7,6 @@ namespace EventSourcedBank.Domain
 {
     public sealed class BankAccount : EventStream<BankAccountEvent>
     {
-        private EventId GetNextEventId() => new EventId(Events.Count);
-
         private BankAccount ApplyEvent(BankAccountEvent evt)
             => new BankAccount(Id, Events.Add(evt), evt.ApplyTo(State));
 
