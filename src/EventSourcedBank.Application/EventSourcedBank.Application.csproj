@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>Richiban.EventSourcedBank.Application</RootNamespace>
+    <AssemblyName>Richiban.EventSourcedBank.Application</AssemblyName>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\EventSourcedBank.Data.Write\EventSourcedBank.Data.Write.csproj" />
-    </ItemGroup>
-    
+  <ItemGroup>
+    <ProjectReference Include="..\EventSourcedBank.Data.Write\EventSourcedBank.Data.Write.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EventSourcedBank.Domain
+namespace Richiban.EventSourcedBank.Domain
 {
     public sealed class InsufficientFundsException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EventSourcedBank.Domain
+namespace Richiban.EventSourcedBank.Domain
 {
     public record Money(int Value)
     {

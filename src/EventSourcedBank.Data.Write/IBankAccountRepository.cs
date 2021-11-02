@@ -1,6 +1,7 @@
-﻿using EventSourcedBank.Domain;
+﻿using System;
+using Richiban.EventSourcedBank.Domain;
 
-namespace EventSourcedBank.Data.Write
+namespace Richiban.EventSourcedBank.Data.Write
 {
     public interface IBankAccountRepository
     {

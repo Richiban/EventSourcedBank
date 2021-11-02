@@ -1,19 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>Richiban.EventSourcedBank.Data.Write</RootNamespace>
+    <AssemblyName>Richiban.EventSourcedBank.Data.Write</AssemblyName>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="EventStore.Client" Version="21.2.1" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EventStore.Client" Version="21.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj" />
-      <ProjectReference Include="..\EventSourcedBank.Domain\EventSourcedBank.Domain.csproj" />
-    </ItemGroup>
-    
+  <ItemGroup>
+    <ProjectReference Include="..\EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj" />
+    <ProjectReference Include="..\EventSourcedBank.Domain\EventSourcedBank.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

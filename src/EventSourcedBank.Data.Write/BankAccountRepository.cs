@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using EventSourcedBank.Data.Read;
-using EventSourcedBank.Domain;
-using EventStore.ClientAPI;
-using System.Net;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using EventStore.ClientAPI;
 using Newtonsoft.Json;
+using Richiban.EventSourcedBank.Data.Read;
+using Richiban.EventSourcedBank.Domain;
 
-namespace EventSourcedBank.Data.Write
+namespace Richiban.EventSourcedBank.Data.Write
 {
     public sealed class BankAccountRepository : IBankAccountRepository
     {

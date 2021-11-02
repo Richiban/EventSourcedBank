@@ -1,9 +1,10 @@
 ﻿using System;
-using EventSourcedBank.Data.Write;
 using NUnit.Framework;
+using Richiban.EventSourcedBank.Application;
+using Richiban.EventSourcedBank.Data.Write;
 using static PowerAssert.PAssert;
 
-namespace EventSourcedBank.Application.Tests.EndToEnd
+namespace Richiban.EventSourcedBank.Tests.EndToEnd
 {
     [TestFixture]
     public class CreateNewAccountTests

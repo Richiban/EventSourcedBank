@@ -1,8 +1,8 @@
 ﻿using System;
-using EventSourcedBank.Data.Write;
-using EventSourcedBank.Domain;
+using Richiban.EventSourcedBank.Data.Write;
+using Richiban.EventSourcedBank.Domain;
 
-namespace EventSourcedBank.Application
+namespace Richiban.EventSourcedBank.Application
 {
     public sealed class CashMachine
     {

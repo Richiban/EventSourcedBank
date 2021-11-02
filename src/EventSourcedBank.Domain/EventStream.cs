@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 
-namespace EventSourcedBank.Domain
+namespace Richiban.EventSourcedBank.Domain
 {
     public abstract class EventStream<T> : IReadOnlyCollection<T> where T : DomainEvent
     {

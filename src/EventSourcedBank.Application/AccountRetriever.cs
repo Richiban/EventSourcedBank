@@ -1,6 +1,7 @@
-﻿using EventSourcedBank.Data.Read;
+﻿using System;
+using Richiban.EventSourcedBank.Data.Read;
 
-namespace EventSourcedBank.Application
+namespace Richiban.EventSourcedBank.Application
 {
     public sealed class AccountRetriever
     {

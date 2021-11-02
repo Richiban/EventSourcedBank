@@ -3,25 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Application", "EventSourcedBank.Application\EventSourcedBank.Application.csproj", "{47770989-2E85-4211-9D09-AD49A727B240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcedBank.Application", "EventSourcedBank.Application\EventSourcedBank.Application.csproj", "{47770989-2E85-4211-9D09-AD49A727B240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Application.Tests.EndToEnd", "EventSourcedBank.Application.Tests.EndToEnd\EventSourcedBank.Application.Tests.EndToEnd.csproj", "{F9813A80-E455-4445-B305-AC3D96C21065}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcedBank.Application.Tests.EndToEnd", "EventSourcedBank.Application.Tests.EndToEnd\EventSourcedBank.Application.Tests.EndToEnd.csproj", "{F9813A80-E455-4445-B305-AC3D96C21065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Data.Read", "EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj", "{A319FD0D-0493-477D-BFA5-B1BB6DFC6886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcedBank.Data.Read", "EventSourcedBank.Data.Read\EventSourcedBank.Data.Read.csproj", "{A319FD0D-0493-477D-BFA5-B1BB6DFC6886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Data.Write", "EventSourcedBank.Data.Write\EventSourcedBank.Data.Write.csproj", "{307FAE4D-BB3A-45BB-B5F6-E1CCAB8B2857}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcedBank.Data.Write", "EventSourcedBank.Data.Write\EventSourcedBank.Data.Write.csproj", "{307FAE4D-BB3A-45BB-B5F6-E1CCAB8B2857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Data.Write.Tests.Integration", "EventSourcedBank.Data.Write.Tests.Integration\EventSourcedBank.Data.Write.Tests.Integration.csproj", "{3FB6C2F4-8E7D-452C-A57E-B54F1A674535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcedBank.Data.Write.Tests.Integration", "EventSourcedBank.Data.Write.Tests.Integration\EventSourcedBank.Data.Write.Tests.Integration.csproj", "{3FB6C2F4-8E7D-452C-A57E-B54F1A674535}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Domain", "EventSourcedBank.Domain\EventSourcedBank.Domain.csproj", "{350170FA-AF15-48C0-B1F9-06AA1931FE80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourcedBank.Domain", "EventSourcedBank.Domain\EventSourcedBank.Domain.csproj", "{350170FA-AF15-48C0-B1F9-06AA1931FE80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcedBank.Console", "EventSourcedBank.Console\EventSourcedBank.Console.csproj", "{F387C14D-BD6E-4F49-B87B-68A64B269903}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{47770989-2E85-4211-9D09-AD49A727B240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +47,15 @@ Global
 		{350170FA-AF15-48C0-B1F9-06AA1931FE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{350170FA-AF15-48C0-B1F9-06AA1931FE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{350170FA-AF15-48C0-B1F9-06AA1931FE80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F387C14D-BD6E-4F49-B87B-68A64B269903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F387C14D-BD6E-4F49-B87B-68A64B269903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F387C14D-BD6E-4F49-B87B-68A64B269903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F387C14D-BD6E-4F49-B87B-68A64B269903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF47C1E4-02C6-4C73-8E27-DB3046D94E35}
 	EndGlobalSection
 EndGlobal

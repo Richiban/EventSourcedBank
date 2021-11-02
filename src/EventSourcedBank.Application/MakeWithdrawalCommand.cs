@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EventSourcedBank.Application
+namespace Richiban.EventSourcedBank.Application
 {
     public sealed class MakeWithdrawalCommand
     {

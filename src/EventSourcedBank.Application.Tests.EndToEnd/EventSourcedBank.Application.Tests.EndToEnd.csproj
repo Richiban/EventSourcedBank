@@ -4,6 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <RootNamespace>Richiban.EventSourcedBank.Tests.EndToEnd</RootNamespace>
+      <AssemblyName>Richiban.EventSourcedBank.Tests.EndToEnd</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

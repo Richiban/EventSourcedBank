@@ -1,10 +1,10 @@
 ﻿using System;
-using EventSourcedBank.Domain;
-using NUnit.Framework;
-using static PowerAssert.PAssert;
 using Newtonsoft.Json;
+using NUnit.Framework;
+using Richiban.EventSourcedBank.Domain;
+using static PowerAssert.PAssert;
 
-namespace EventSourcedBank.Data.Write.Tests.Integration
+namespace Richiban.EventSourcedBank.Data.Write.Tests.Integration
 {
     [TestFixture]
     public class BankAccountRepositoryTests

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EventSourcedBank.Data.Read
+namespace Richiban.EventSourcedBank.Data.Read
 {
     public sealed record BankAccountData(
         Guid Id,

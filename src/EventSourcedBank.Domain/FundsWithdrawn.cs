@@ -1,4 +1,6 @@
-﻿namespace EventSourcedBank.Domain
+﻿using System;
+
+namespace Richiban.EventSourcedBank.Domain
 {
     public sealed record FundsWithdrawn(
         AccountId AppliesTo,

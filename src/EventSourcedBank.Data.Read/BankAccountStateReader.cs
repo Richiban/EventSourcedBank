@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EventSourcedBank.Data.Read
+namespace Richiban.EventSourcedBank.Data.Read
 {
     public sealed class BankAccountStateReader : IBankAccountStateReader
     {

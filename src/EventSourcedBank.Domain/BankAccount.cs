@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace EventSourcedBank.Domain
+namespace Richiban.EventSourcedBank.Domain
 {
     public sealed class BankAccount : EventStream<BankAccountEvent>
     {
